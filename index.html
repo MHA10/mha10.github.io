@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Muhammad Hamza Ashraf — Senior Backend & Full-stack Engineer</title>
+  <meta name="description" content="Muhammad Hamza Ashraf — Senior Backend & Full-stack Engineer and Technical Lead. TypeScript, NestJS, Next.js, PostgreSQL, AWS, AI/LLM pipelines, blockchain. Based in Lahore, available remotely." />
+  <meta name="author" content="Muhammad Hamza Ashraf" />
+
+  <!-- Open Graph / social preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Muhammad Hamza Ashraf — Senior Backend & Full-stack Engineer" />
+  <meta property="og:description" content="Technical Lead building scalable backends, real-time systems, AI pipelines, and cross-chain infrastructure. TypeScript · NestJS · Next.js · PostgreSQL · AWS." />
+  <meta property="og:image" content="assets/profile.jpg" />
+  <meta property="og:url" content="https://mha10.github.io" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="public/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" />
+
+  <style>
+    :root {
+      --bg: #070b14;
+      --bg-2: #0b1220;
+      --surface: #111a2e;
+      --surface-2: #16223b;
+      --border: rgba(255,255,255,.08);
+      --border-strong: rgba(255,255,255,.14);
+      --text: #e8eefb;
+      --text-muted: #9fb0c9;
+      --text-dim: #6b7c96;
+      --accent: #5b8cff;
+      --accent-2: #8b6cff;
+      --mint: #34e2b0;
+      --amber: #ffb454;
+      --grad: linear-gradient(120deg, #5b8cff 0%, #8b6cff 55%, #b06cff 100%);
+      --grad-mint: linear-gradient(120deg, #34e2b0, #5b8cff);
+      --shadow: 0 20px 50px -20px rgba(0,0,0,.7);
+      --ring: 0 0 0 1px var(--border);
+      --maxw: 1120px;
+    }
+    html[data-theme="light"] {
+      --bg: #f6f8fc;
+      --bg-2: #eef2f9;
+      --surface: #ffffff;
+      --surface-2: #f3f6fc;
+      --border: rgba(12,20,40,.10);
+      --border-strong: rgba(12,20,40,.18);
+      --text: #0f1a2e;
+      --text-muted: #46586f;
+      --text-dim: #74849b;
+      --accent: #3b6fe0;
+      --accent-2: #7a52e6;
+      --shadow: 0 20px 50px -24px rgba(20,40,90,.28);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background .4s ease, color .4s ease;
+    }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: rgba(91,140,255,.35); }
+
+    /* ambient background glow */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(650px 400px at 12% -5%, rgba(91,140,255,.16), transparent 60%),
+        radial-gradient(700px 500px at 92% 8%, rgba(139,108,255,.14), transparent 55%),
+        radial-gradient(600px 600px at 50% 105%, rgba(52,226,176,.08), transparent 60%);
+      pointer-events: none;
+    }
+
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+    /* ---------- NAV ---------- */
+    header.nav {
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(14px);
+      background: color-mix(in srgb, var(--bg) 78%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 66px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -.02em; font-size: 1.05rem; }
+    .brand .logo {
+      width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center;
+      background: var(--grad); color: #fff; font-weight: 900; font-size: .95rem;
+      box-shadow: 0 6px 18px -6px rgba(91,140,255,.7);
+    }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      padding: 8px 14px; border-radius: 9px; font-size: .92rem; font-weight: 500;
+      color: var(--text-muted); transition: color .2s, background .2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); background: var(--surface); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .theme-btn {
+      width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--border);
+      background: var(--surface); color: var(--text); cursor: pointer; font-size: 1rem;
+      display: grid; place-items: center; transition: .2s;
+    }
+    .theme-btn:hover { border-color: var(--border-strong); transform: translateY(-1px); }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: .92rem;
+      padding: 10px 18px; border-radius: 10px; cursor: pointer; border: 1px solid transparent;
+      transition: transform .18s ease, box-shadow .18s ease, background .2s, border-color .2s;
+      white-space: nowrap;
+    }
+    .btn-primary { background: var(--grad); color: #fff; box-shadow: 0 10px 26px -10px rgba(91,140,255,.75); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 34px -10px rgba(91,140,255,.85); }
+    .btn-ghost { background: var(--surface); color: var(--text); border-color: var(--border); }
+    .btn-ghost:hover { border-color: var(--border-strong); transform: translateY(-2px); }
+    .hamburger { display: none; width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); color: var(--text); cursor: pointer; font-size: 1.1rem; }
+
+    /* ---------- HERO ---------- */
+    .hero { padding: 74px 0 40px; }
+    .hero-grid { display: grid; grid-template-columns: 1.5fr .9fr; gap: 52px; align-items: center; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px;
+      background: var(--surface); border: 1px solid var(--border); font-size: .82rem; color: var(--text-muted);
+      font-weight: 500; margin-bottom: 22px;
+    }
+    .pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 3px rgba(52,226,176,.2); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.45} }
+    .hero h1 { font-size: clamp(2.3rem, 5vw, 3.5rem); line-height: 1.04; letter-spacing: -.03em; font-weight: 900; margin-bottom: 14px; }
+    .hero h1 .grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .role-line { font-size: clamp(1.05rem, 2.2vw, 1.4rem); font-weight: 600; color: var(--text); min-height: 1.5em; margin-bottom: 18px; font-family: 'JetBrains Mono', monospace; letter-spacing: -.01em; }
+    .role-line .typed { border-right: 2px solid var(--accent); padding-right: 3px; }
+    .hero p.lead { font-size: 1.08rem; color: var(--text-muted); max-width: 560px; margin-bottom: 26px; }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 26px; }
+    .socials { display: flex; gap: 12px; }
+    .socials a {
+      width: 44px; height: 44px; border-radius: 11px; display: grid; place-items: center;
+      background: var(--surface); border: 1px solid var(--border); color: var(--text-muted); font-size: 1.15rem;
+      transition: .2s;
+    }
+    .socials a:hover { color: var(--text); border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 22px -12px rgba(91,140,255,.6); }
+
+    .hero-photo { position: relative; justify-self: center; }
+    .hero-photo .frame {
+      width: 300px; height: 300px; border-radius: 26px; overflow: hidden;
+      border: 1px solid var(--border-strong); box-shadow: var(--shadow);
+      position: relative;
+    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-photo .glow { position: absolute; inset: -18px; border-radius: 32px; background: var(--grad); filter: blur(38px); opacity: .38; z-index: -1; }
+    .float-card {
+      position: absolute; background: color-mix(in srgb, var(--surface) 92%, transparent);
+      backdrop-filter: blur(8px); border: 1px solid var(--border-strong); border-radius: 13px;
+      padding: 10px 14px; box-shadow: var(--shadow); font-size: .8rem; display: flex; align-items: center; gap: 9px;
+      animation: floaty 4s ease-in-out infinite;
+    }
+    .float-card i { font-size: 1rem; }
+    .float-card.fc1 { top: 18px; left: -34px; }
+    .float-card.fc2 { bottom: 22px; right: -30px; animation-delay: 1.5s; }
+    @keyframes floaty { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-9px)} }
+
+    /* ---------- SECTIONS ---------- */
+    section { padding: 62px 0; }
+    .section-head { margin-bottom: 40px; }
+    .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: .82rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .section-head h2 { font-size: clamp(1.7rem, 3.4vw, 2.4rem); letter-spacing: -.03em; font-weight: 800; margin-top: 6px; }
+    .section-head p { color: var(--text-muted); margin-top: 8px; max-width: 620px; }
+
+    /* metrics */
+    .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .metric {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px 22px;
+      transition: .25s; position: relative; overflow: hidden;
+    }
+    .metric::after { content:""; position:absolute; left:0; top:0; height:3px; width:0; background: var(--grad); transition: width .5s ease; }
+    .metric:hover { border-color: var(--border-strong); transform: translateY(-4px); }
+    .metric:hover::after { width: 100%; }
+    .metric .num { font-size: 2.2rem; font-weight: 900; letter-spacing: -.03em; background: var(--grad-mint); -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1.1; }
+    .metric .lbl { font-weight: 600; margin-top: 6px; font-size: .96rem; }
+    .metric .sub { color: var(--text-dim); font-size: .84rem; margin-top: 3px; }
+
+    /* current roles */
+    .roles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .role-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 22px;
+      display: flex; gap: 16px; transition: .25s;
+    }
+    .role-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 18px 40px -24px rgba(91,140,255,.5); }
+    .role-card .ico { flex: none; width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; font-size: 1.2rem; background: var(--surface-2); border: 1px solid var(--border); }
+    .role-card h3 { font-size: 1.06rem; letter-spacing: -.01em; }
+    .role-card .co { color: var(--accent); font-weight: 600; font-size: .94rem; }
+    .role-card .meta { color: var(--text-dim); font-size: .82rem; margin: 2px 0 8px; font-family: 'JetBrains Mono', monospace; }
+    .role-card p { color: var(--text-muted); font-size: .9rem; }
+
+    /* projects */
+    .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .proj {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 26px;
+      display: flex; flex-direction: column; transition: .25s; position: relative; overflow: hidden;
+    }
+    .proj:hover { border-color: var(--border-strong); transform: translateY(-4px); box-shadow: var(--shadow); }
+    .proj.flagship { grid-column: 1 / -1; background: linear-gradient(150deg, var(--surface), var(--surface-2)); border-color: var(--border-strong); }
+    .proj-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+    .proj-icon { width: 48px; height: 48px; border-radius: 13px; display: grid; place-items: center; font-size: 1.35rem; color: #fff; background: var(--grad); flex: none; box-shadow: 0 10px 24px -12px rgba(91,140,255,.7); }
+    .proj-links { display: flex; gap: 8px; }
+    .proj-links a { width: 36px; height: 36px; border-radius: 9px; display: grid; place-items: center; background: var(--surface-2); border: 1px solid var(--border); color: var(--text-muted); transition: .2s; font-size: .95rem; }
+    .proj-links a:hover { color: var(--text); border-color: var(--accent); transform: translateY(-2px); }
+    .proj h3 { font-size: 1.25rem; letter-spacing: -.02em; }
+    .proj .tag-flag { display: inline-flex; align-items: center; gap: 6px; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--amber); margin-bottom: 6px; }
+    .proj .role-sub { color: var(--text-dim); font-size: .84rem; margin: 2px 0 10px; font-family: 'JetBrains Mono', monospace; }
+    .proj p.desc { color: var(--text-muted); font-size: .94rem; margin-bottom: 14px; }
+    .proj ul { list-style: none; margin-bottom: 16px; display: grid; gap: 7px; }
+    .proj ul li { position: relative; padding-left: 22px; font-size: .9rem; color: var(--text-muted); }
+    .proj ul li::before { content: "\f0da"; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; left: 4px; color: var(--accent); font-size: .8rem; }
+    .flagcols { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 26px; }
+    .stack { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; }
+    .chip { font-size: .78rem; font-weight: 500; padding: 5px 11px; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border); color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+    .proj.flagship .chip { background: color-mix(in srgb, var(--accent) 12%, transparent); border-color: color-mix(in srgb, var(--accent) 30%, transparent); color: var(--text); }
+
+    /* skills */
+    .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .skill-block { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 22px; }
+    .skill-block h3 { font-size: .95rem; display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .skill-block h3 i { color: var(--accent); font-size: 1.05rem; }
+    .skill-block .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    /* timeline */
+    .timeline { position: relative; padding-left: 30px; }
+    .timeline::before { content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 2px; background: linear-gradient(var(--accent), var(--accent-2), transparent); }
+    .tl-item { position: relative; padding-bottom: 30px; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-item::before { content: ""; position: absolute; left: -30px; top: 4px; width: 16px; height: 16px; border-radius: 50%; background: var(--bg); border: 3px solid var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent); }
+    .tl-item.current::before { background: var(--mint); border-color: var(--mint); box-shadow: 0 0 0 4px color-mix(in srgb, var(--mint) 22%, transparent); }
+    .tl-item h3 { font-size: 1.08rem; }
+    .tl-item .co { color: var(--accent); font-weight: 600; font-size: .95rem; }
+    .tl-item .when { color: var(--text-dim); font-size: .82rem; font-family: 'JetBrains Mono', monospace; margin: 2px 0 8px; }
+    .tl-item p { color: var(--text-muted); font-size: .92rem; }
+    .tl-group-label { font-family: 'JetBrains Mono', monospace; font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-dim); margin: 4px 0 18px; font-weight: 600; }
+
+    /* two-col bottom */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
+    .card h3 { font-size: 1.1rem; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .card h3 i { color: var(--accent); }
+    .edu-item { padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .edu-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .edu-item strong { font-size: .98rem; }
+    .edu-item .sub { color: var(--text-muted); font-size: .88rem; }
+    .edu-item .when { color: var(--text-dim); font-size: .8rem; font-family: 'JetBrains Mono', monospace; }
+    .cert-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .cert-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .cert-item i { color: var(--amber); font-size: 1.1rem; flex: none; }
+    .cert-item a:hover { color: var(--accent); }
+
+    /* contact */
+    .contact-box { background: linear-gradient(150deg, var(--surface), var(--surface-2)); border: 1px solid var(--border-strong); border-radius: 22px; padding: 48px 40px; text-align: center; box-shadow: var(--shadow); }
+    .contact-box h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -.03em; font-weight: 800; margin-bottom: 12px; }
+    .contact-box p { color: var(--text-muted); max-width: 500px; margin: 0 auto 26px; font-size: 1.05rem; }
+    .contact-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+
+    footer { border-top: 1px solid var(--border); padding: 30px 0; margin-top: 30px; }
+    .foot-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--text-dim); font-size: .88rem; }
+    .foot-inner .socials a { width: 38px; height: 38px; font-size: 1rem; }
+
+    /* reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-photo { order: -1; }
+      .metrics { grid-template-columns: repeat(2, 1fr); }
+      .roles, .projects, .skills-grid, .two-col { grid-template-columns: 1fr; }
+      .flagcols { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hamburger { display: grid; place-items: center; }
+      .nav-links.open {
+        display: flex; flex-direction: column; position: absolute; top: 66px; left: 0; right: 0;
+        background: var(--bg-2); border-bottom: 1px solid var(--border); padding: 12px 24px; gap: 4px;
+      }
+      .nav-links.open a { padding: 12px; }
+      .nav-actions .btn.hide-sm { display: none; }
+    }
+    @media (max-width: 520px) {
+      .metrics { grid-template-columns: 1fr; }
+      .float-card.fc1 { left: -10px; }
+      .float-card.fc2 { right: -8px; }
+      .hero-photo .frame { width: 250px; height: 250px; }
+      .contact-box { padding: 36px 22px; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } .reveal { opacity: 1; transform: none; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a href="#top" class="brand"><span class="logo">HA</span> Hamza Ashraf</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#impact">Impact</a>
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+        <a href="#contact" class="btn btn-primary hide-sm"><i class="fa-solid fa-paper-plane"></i> Get in touch</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <a id="top"></a>
+  <section class="hero" style="padding-top:74px">
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <span class="pill"><span class="dot"></span> Available for senior / lead roles &amp; contracts — remote</span>
+        <h1>Muhammad <span class="grad">Hamza Ashraf</span></h1>
+        <div class="role-line">&lt;<span class="typed" id="typed"></span>&gt;</div>
+        <p class="lead">Senior engineer and technical lead who ships scalable backends, real-time systems, AI pipelines, and cross-chain infrastructure. Currently holding four senior/lead roles at once — from unmanned traffic management to compliance-grade cross-chain settlement.</p>
+        <div class="hero-cta">
+          <a href="assets/Hamza_Ashraf_Resume.pdf" target="_blank" class="btn btn-primary"><i class="fa-solid fa-file-arrow-down"></i> Download Résumé</a>
+          <a href="#projects" class="btn btn-ghost"><i class="fa-solid fa-folder-open"></i> View Work</a>
+        </div>
+        <div class="socials">
+          <a href="https://github.com/MHA10" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://linkedin.com/in/muhammad-hamza-ashraf" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="mailto:mhamza.141097@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+          <a href="tel:+923204102829" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
+        </div>
+      </div>
+      <div class="hero-photo reveal">
+        <div class="glow"></div>
+        <div class="frame"><img src="assets/profile.jpg" alt="Muhammad Hamza Ashraf" /></div>
+        <div class="float-card fc1"><i class="fa-solid fa-bolt" style="color:var(--mint)"></i> 95% latency cut</div>
+        <div class="float-card fc2"><i class="fa-solid fa-circle-check" style="color:var(--accent)"></i> 51/51 e2e green</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">01 — About</span>
+        <h2>Backend depth, full-stack range, lead-level judgment</h2>
+        <p>Nine years in, I build the load-bearing parts of products — data models, APIs, message queues, and the resilience layers that keep them up — and lead the teams that ship them.</p>
+      </div>
+      <div class="two-col reveal">
+        <div class="card">
+          <h3><i class="fa-solid fa-compass-drafting"></i> What I do</h3>
+          <p style="color:var(--text-muted); font-size:.96rem">
+            I specialize in backend architecture — <strong>NestJS / Node / TypeScript</strong> services, <strong>PostgreSQL</strong> and multi-database schema design, event-driven systems on <strong>RabbitMQ</strong>, and the AWS/Kubernetes infrastructure underneath. I move comfortably up the stack into <strong>Next.js / React</strong> when a product needs it end-to-end, and increasingly into <strong>AI/LLM pipelines</strong> and <strong>blockchain</strong> (Canton, Hyperledger, Solidity). I care about the failure modes most people skip: atomic writes, idempotency, graceful shutdown, and rate limits before they become incidents.
+          </p>
+        </div>
+        <div class="card">
+          <h3><i class="fa-solid fa-location-dot"></i> At a glance</h3>
+          <div class="edu-item"><strong>Location</strong> <div class="sub">Lahore, Pakistan — work remotely across US / EU / GCC time zones</div></div>
+          <div class="edu-item"><strong>Focus</strong> <div class="sub">Backend &amp; system architecture · full-stack · AI pipelines · real-time &amp; streaming</div></div>
+          <div class="edu-item"><strong>Currently</strong> <div class="sub">Senior/lead roles at SERB, Staff Link, Interstice Digital &amp; Tellory</div></div>
+          <div class="edu-item"><strong>Open to</strong> <div class="sub">Senior/lead engineering roles, contracts, and fractional technical leadership</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section id="impact" style="padding-top:20px">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">02 — Impact</span>
+        <h2>Outcomes, not just output</h2>
+        <p>A few results that are easy to point at — each tied to real production work.</p>
+      </div>
+      <div class="metrics">
+        <div class="metric reveal"><div class="num">51 / 51</div><div class="lbl">e2e tests restored</div><div class="sub">Interstice — migrated Canton ACS verification from HTTP polling to WebSocket streaming (from 8 failing)</div></div>
+        <div class="metric reveal"><div class="num">95%+</div><div class="lbl">latency reduction</div><div class="sub">Yoga Joint — local cache + webhook invalidation vs. 3rd-party API (5–50ms vs. 200–2000ms)</div></div>
+        <div class="metric reveal"><div class="num">99.9%</div><div class="lbl">message reliability target</div><div class="sub">SERB — RabbitMQ re-architecture with DLQ, auto-reconnect &amp; graceful shutdown</div></div>
+        <div class="metric reveal"><div class="num">50,000+</div><div class="lbl">data points scaled</div><div class="sub">Elevate/Shopify — moved metadata to variant level, past the 5-field ceiling</div></div>
+        <div class="metric reveal"><div class="num">$0.50</div><div class="lbl">AI cost cap / item</div><div class="sub">Tellory — enrichment guardrails, down from a potential $30 runaway per item</div></div>
+        <div class="metric reveal"><div class="num">&lt; 1 mo</div><div class="lbl">to Technical Lead</div><div class="sub">Staff Link — promoted from Senior Backend Engineer within a month</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURRENT WORK -->
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">03 — Currently</span>
+        <h2>Four senior roles, in parallel</h2>
+        <p>Balancing delivery across UTM infrastructure, cross-chain settlement, AI content pipelines, and a payments platform.</p>
+      </div>
+      <div class="roles">
+        <div class="role-card reveal">
+          <div class="ico"><i class="fa-solid fa-tower-broadcast" style="color:var(--accent)"></i></div>
+          <div>
+            <h3>Senior Full-stack Engineer</h3>
+            <div class="co">SERB · Muscat, Oman</div>
+            <div class="meta">Oct 2025 — Present</div>
+            <p>Re-architected the RabbitMQ layer (SOLID, DLQ, K8s graceful shutdown, auto-reconnect) toward 99.9% delivery; registry-based RPC routing; monorepo migration; feature-flag rollbacks. Unmanned traffic management (flyserb.com).</p>
+          </div>
+        </div>
+        <div class="role-card reveal">
+          <div class="ico"><i class="fa-solid fa-users-gear" style="color:var(--accent-2)"></i></div>
+          <div>
+            <h3>Technical Team Lead</h3>
+            <div class="co">Staff Link / Aubilities</div>
+            <div class="meta">Sep 2025 — Present · promoted from Senior BE in &lt;1 month</div>
+            <p>End-to-end Stripe Connect (connected accounts, payouts, webhooks, invoicing); MongoDB RBAC; wildcard CI/CD to 0–9 staging envs; Grafana/Loki/Prometheus observability. Leading the board and the build.</p>
+          </div>
+        </div>
+        <div class="role-card reveal">
+          <div class="ico"><i class="fa-solid fa-link" style="color:var(--mint)"></i></div>
+          <div>
+            <h3>Senior Full-stack Engineer <span style="color:var(--text-dim);font-weight:500">(Contract)</span></h3>
+            <div class="co">Interstice Digital</div>
+            <div class="meta">Mar 2026 — Present</div>
+            <p>Cross-chain atomic swaps connecting Canton Network (Daml/HTLC) to Ethereum. Fixed the 200-element ACS cap by moving verification to Canton WebSocket streaming; built the LP RFQ marketplace and onboarding flows.</p>
+          </div>
+        </div>
+        <div class="role-card reveal">
+          <div class="ico"><i class="fa-solid fa-robot" style="color:var(--amber)"></i></div>
+          <div>
+            <h3>Senior Backend Engineer <span style="color:var(--text-dim);font-weight:500">(Contract)</span></h3>
+            <div class="co">Tellory / Kooga</div>
+            <div class="meta">Mar 2026 — Present</div>
+            <p>Hardened AI content-enrichment workers: SSRF &amp; prompt-injection defense, atomic PostgreSQL RPC transactions, and cost/timeout guardrails that cap runaway LLM loops at $0.50/item.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">04 — Projects</span>
+        <h2>Selected work</h2>
+        <p>From a live IoT streaming platform I built end-to-end, to compliance-grade cross-chain infrastructure.</p>
+      </div>
+      <div class="projects">
+
+        <div class="proj flagship reveal">
+          <div class="proj-top">
+            <div class="proj-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+            <div class="proj-links">
+              <a href="https://drop-shot.live" target="_blank" rel="noopener" title="Live site"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <div class="tag-flag"><i class="fa-solid fa-star"></i> Flagship — Founder, Full-stack &amp; IoT</div>
+          <h3>Dropshot — Live Padel Streaming Platform</h3>
+          <div class="role-sub">drop-shot.live</div>
+          <p class="desc">An end-to-end platform broadcasting padel tournaments to YouTube with real-time scoring, distributed streamer nodes, and IoT scoreboard integration. Sole architect across web, desktop, backend, streaming clients, and hardware.</p>
+          <div class="flagcols">
+            <ul>
+              <li>YouTube Live API + OAuth2 pipeline: creates broadcasts, binds RTMP streams, transitions lifecycle</li>
+              <li>Distributed TypeScript streaming clients spawning FFmpeg for RTSP→RTMP transcoding (Clean Architecture)</li>
+            </ul>
+            <ul>
+              <li>Server-Sent Events push live FFmpeg parameter changes with zero stream interruption</li>
+              <li>ESP8266 / Arduino scoreboard over captive-portal WiFi, syncing scores to Supabase in real time</li>
+            </ul>
+          </div>
+          <div class="stack">
+            <span class="chip">NestJS</span><span class="chip">Next.js</span><span class="chip">Electron</span><span class="chip">FFmpeg</span><span class="chip">YouTube Live API</span><span class="chip">SSE</span><span class="chip">Supabase</span><span class="chip">ESP8266 / Arduino</span><span class="chip">PostgreSQL</span><span class="chip">Redis</span>
+          </div>
+        </div>
+
+        <div class="proj reveal">
+          <div class="proj-top">
+            <div class="proj-icon"><i class="fa-solid fa-arrows-left-right-to-line"></i></div>
+            <div class="proj-links">
+              <a href="https://www.intersticedigital.io" target="_blank" rel="noopener" title="Company site"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <h3>Interstice — Cross-chain Swap Engine</h3>
+          <div class="role-sub">Canton Network ↔ Ethereum</div>
+          <p class="desc">Compliance-grade atomic settlement between Canton (Daml/HTLC) and Ethereum. Owned end-to-end swap flows and the resilience layer around contract verification.</p>
+          <ul>
+            <li>Moved ACS verification from HTTP polling to WebSocket streaming — past Canton's 200-element cap (8→51/51 e2e)</li>
+            <li>Built the LP RFQ marketplace and multi-jurisdiction onboarding flows</li>
+          </ul>
+          <div class="stack"><span class="chip">TypeScript</span><span class="chip">Daml / HTLC</span><span class="chip">Ethereum</span><span class="chip">WebSocket</span><span class="chip">Next.js</span></div>
+        </div>
+
+        <div class="proj reveal">
+          <div class="proj-top">
+            <div class="proj-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          </div>
+          <h3>Tellory — AI Content Enrichment</h3>
+          <div class="role-sub">Kooga monorepo · security &amp; data integrity</div>
+          <p class="desc">Hardened a fleet of AI enrichment workers processing UGC and org/provider discovery at scale.</p>
+          <ul>
+            <li>SSRF &amp; prompt-injection defenses across ingestion; cost + timeout guardrails on LLM agents</li>
+            <li>Converted multi-step writes to atomic PostgreSQL RPC transactions — eliminated stuck-queue &amp; partial-write bugs</li>
+          </ul>
+          <div class="stack"><span class="chip">Node.js</span><span class="chip">PostgreSQL</span><span class="chip">Supabase</span><span class="chip">OpenAI</span><span class="chip">Anthropic</span></div>
+        </div>
+
+        <div class="proj reveal">
+          <div class="proj-top">
+            <div class="proj-icon"><i class="fa-solid fa-server"></i></div>
+            <div class="proj-links">
+              <a href="https://www.hellogov.com" target="_blank" rel="noopener" title="Live site"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <h3>HelloGov — Gov Expediting Backend</h3>
+          <div class="role-sub">Polyglot backend, US government services</div>
+          <p class="desc">Led the backend for a US government application-expediting platform with a multi-database architecture.</p>
+          <ul>
+            <li>PostgreSQL + MongoDB + Azure CosmosDB schemas for fast retrieval across data types</li>
+            <li>Query optimization &amp; connection-pool fixes that resolved production instability at scale</li>
+          </ul>
+          <div class="stack"><span class="chip">NestJS</span><span class="chip">PostgreSQL</span><span class="chip">MongoDB</span><span class="chip">Azure</span></div>
+        </div>
+
+        <div class="proj reveal">
+          <div class="proj-top">
+            <div class="proj-icon"><i class="fa-solid fa-list-check"></i></div>
+            <div class="proj-links">
+              <a href="https://lineup.direct/discovery" target="_blank" rel="noopener" title="Live site"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <h3>LineUp — Queue &amp; Discovery Platform</h3>
+          <div class="role-sub">Marketplace with payments</div>
+          <p class="desc">A discovery and queue-management marketplace taken from concept to production.</p>
+          <ul>
+            <li>Stripe Connect payments, dynamic scheduling, real-time queue updates</li>
+            <li>Location-based discovery via mapping integrations</li>
+          </ul>
+          <div class="stack"><span class="chip">Node.js</span><span class="chip">React</span><span class="chip">Stripe Connect</span><span class="chip">Maps API</span></div>
+        </div>
+
+        <div class="proj reveal">
+          <div class="proj-top">
+            <div class="proj-icon"><i class="fa-solid fa-cubes"></i></div>
+            <div class="proj-links">
+              <a href="https://github.com/agstack" target="_blank" rel="noopener" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            </div>
+          </div>
+          <h3>AgStack — Linux Foundation</h3>
+          <div class="role-sub">Open-source agricultural data platform</div>
+          <p class="desc">Contributor to an open-source platform under the Linux Foundation.</p>
+          <ul>
+            <li>Flask microservices with JWT SSO, email activation, and API-key management</li>
+            <li>Embedded Google S2 Geometry (s2sphere); authored docs &amp; Jupyter examples</li>
+          </ul>
+          <div class="stack"><span class="chip">Python</span><span class="chip">Flask</span><span class="chip">JWT / SSO</span><span class="chip">PostgreSQL</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">05 — Skills</span>
+        <h2>The toolkit</h2>
+        <p>Deep in the backend and infra, comfortable across the rest.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-block reveal">
+          <h3><i class="fa-solid fa-code"></i> Languages</h3>
+          <div class="chips"><span class="chip">TypeScript</span><span class="chip">JavaScript</span><span class="chip">Python</span><span class="chip">PHP</span><span class="chip">Go</span><span class="chip">Solidity</span></div>
+        </div>
+        <div class="skill-block reveal">
+          <h3><i class="fa-solid fa-layer-group"></i> Backend &amp; Frameworks</h3>
+          <div class="chips"><span class="chip">NestJS</span><span class="chip">Express</span><span class="chip">Next.js</span><span class="chip">React</span><span class="chip">Flask</span><span class="chip">Laravel</span><span class="chip">Medusa.js</span><span class="chip">gRPC</span><span class="chip">GraphQL</span></div>
+        </div>
+        <div class="skill-block reveal">
+          <h3><i class="fa-solid fa-database"></i> Data &amp; ORMs</h3>
+          <div class="chips"><span class="chip">PostgreSQL</span><span class="chip">MongoDB</span><span class="chip">Redis</span><span class="chip">Supabase</span><span class="chip">AstraDB</span><span class="chip">TypeORM</span><span class="chip">Prisma</span><span class="chip">SQLAlchemy</span></div>
+        </div>
+        <div class="skill-block reveal">
+          <h3><i class="fa-solid fa-cloud"></i> Infra &amp; DevOps</h3>
+          <div class="chips"><span class="chip">AWS</span><span class="chip">Azure</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">RabbitMQ</span><span class="chip">Nginx</span><span class="chip">GitHub Actions</span><span class="chip">Grafana / Loki</span><span class="chip">PM2</span></div>
+        </div>
+        <div class="skill-block reveal">
+          <h3><i class="fa-solid fa-brain"></i> AI / LLM &amp; Real-time</h3>
+          <div class="chips"><span class="chip">OpenAI</span><span class="chip">Anthropic Claude</span><span class="chip">Agent pipelines</span><span class="chip">FFmpeg</span><span class="chip">RTMP / RTSP</span><span class="chip">SSE</span><span class="chip">WebSocket</span><span class="chip">YouTube Live API</span></div>
+        </div>
+        <div class="skill-block reveal">
+          <h3><i class="fa-solid fa-link"></i> Blockchain &amp; IoT</h3>
+          <div class="chips"><span class="chip">Canton (Daml)</span><span class="chip">Hyperledger Fabric</span><span class="chip">HTLC</span><span class="chip">Stripe Connect</span><span class="chip">ESP8266</span><span class="chip">Arduino C++</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">06 — Experience</span>
+        <h2>Career timeline</h2>
+      </div>
+      <div class="reveal">
+        <div class="tl-group-label">Current — simultaneous</div>
+        <div class="timeline">
+          <div class="tl-item current">
+            <h3>Senior Full-stack Engineer</h3><div class="co">SERB — Muscat, Oman</div>
+            <div class="when">Oct 2025 — Present</div>
+            <p>RabbitMQ SOLID re-architecture (DLQ, graceful shutdown, auto-reconnect), registry-based RPC, monorepo migration, feature-flag rollbacks for a UTM platform.</p>
+          </div>
+          <div class="tl-item current">
+            <h3>Technical Team Lead <span style="color:var(--text-dim);font-weight:500;font-size:.85rem">(← Senior Backend Engineer)</span></h3><div class="co">Staff Link / Aubilities</div>
+            <div class="when">Sep 2025 — Present</div>
+            <p>Stripe Connect end-to-end, MongoDB RBAC, wildcard CI/CD, full observability stack. Promoted to lead within a month.</p>
+          </div>
+          <div class="tl-item current">
+            <h3>Senior Full-stack Engineer <span style="color:var(--text-dim);font-weight:500;font-size:.85rem">(Contract)</span></h3><div class="co">Interstice Digital</div>
+            <div class="when">Mar 2026 — Present</div>
+            <p>Canton ↔ Ethereum cross-chain atomic swaps; WebSocket ACS verification; LP marketplace &amp; onboarding.</p>
+          </div>
+          <div class="tl-item current">
+            <h3>Senior Backend Engineer <span style="color:var(--text-dim);font-weight:500;font-size:.85rem">(Contract)</span></h3><div class="co">Tellory / Kooga</div>
+            <div class="when">Mar 2026 — Present</div>
+            <p>AI enrichment security hardening, atomic RPC transactions, LLM cost guardrails.</p>
+          </div>
+        </div>
+        <div class="tl-group-label" style="margin-top:34px">Previously</div>
+        <div class="timeline">
+          <div class="tl-item">
+            <h3>Backend Technical Lead</h3><div class="co">Coding Crafts</div>
+            <div class="when">Apr 2022 — Aug 2025</div>
+            <p>Led backend across HelloGov (gov expediting), Yoga Joint (95% latency cut), Elevate/Shopify (50k+ data points), DentalWhale &amp; CrossCheck. Mentored juniors and designed training programs.</p>
+          </div>
+          <div class="tl-item">
+            <h3>Full Stack Developer</h3><div class="co">Rolustech</div>
+            <div class="when">Sep 2020 — Apr 2022</div>
+            <p>Built &amp; deployed the Customer Journey Plugin for SugarCRM. Certified Sugar Developer Specialist.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION + CERTS -->
+  <section style="padding-top:20px">
+    <div class="wrap two-col">
+      <div class="card reveal">
+        <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+        <div class="edu-item">
+          <strong>BS, Computer Science</strong>
+          <div class="sub">FAST NUCES, Lahore — CGPA 3.30</div>
+          <div class="when">2016 — 2020</div>
+        </div>
+        <div class="edu-item">
+          <strong>GCE A-Levels</strong>
+          <div class="sub">Beaconhouse School System, Lahore</div>
+          <div class="when">2014 — 2016</div>
+        </div>
+      </div>
+      <div class="card reveal">
+        <h3><i class="fa-solid fa-certificate"></i> Certifications</h3>
+        <div class="cert-item"><i class="fa-solid fa-award"></i><a href="https://coursera.org/share/fd7e6a9acf526651792ffee4087df7f9" target="_blank" rel="noopener">Generative AI with Large Language Models — AWS &amp; DeepLearning.ai</a></div>
+        <div class="cert-item"><i class="fa-solid fa-award"></i><span>IBM Data Science</span></div>
+        <div class="cert-item"><i class="fa-solid fa-award"></i><span>Certified Sugar Developer Specialist — SugarCRM</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-box reveal">
+        <h2>Let's build something solid.</h2>
+        <p>Open to senior/lead engineering roles, contracts, and fractional technical leadership. The fastest way to reach me is email.</p>
+        <div class="contact-actions">
+          <a href="mailto:mhamza.141097@gmail.com" class="btn btn-primary"><i class="fa-solid fa-envelope"></i> mhamza.141097@gmail.com</a>
+          <a href="https://linkedin.com/in/muhammad-hamza-ashraf" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
+          <a href="https://github.com/MHA10" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fa-brands fa-github"></i> GitHub</a>
+          <a href="assets/Hamza_Ashraf_Resume.pdf" target="_blank" class="btn btn-ghost"><i class="fa-solid fa-file-arrow-down"></i> Résumé</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot-inner">
+      <div>© <span id="year"></span> Muhammad Hamza Ashraf · Built from scratch, deployed on GitHub Pages.</div>
+      <div class="socials">
+        <a href="https://github.com/MHA10" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://linkedin.com/in/muhammad-hamza-ashraf" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="mailto:mhamza.141097@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // theme toggle
+    const themeBtn = document.getElementById('themeBtn');
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if (saved) root.setAttribute('data-theme', saved);
+    function syncIcon(){ themeBtn.innerHTML = root.getAttribute('data-theme') === 'light' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>'; }
+    syncIcon();
+    themeBtn.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      syncIcon();
+    });
+
+    // mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    // typed role rotator
+    const roles = ['Senior Backend Engineer', 'Technical Lead', 'Full-stack Engineer', 'Systems Architect', 'AI Pipelines & Blockchain'];
+    const typedEl = document.getElementById('typed');
+    let ri = 0, ci = 0, deleting = false;
+    function tick(){
+      const word = roles[ri];
+      typedEl.textContent = word.slice(0, ci);
+      if (!deleting && ci < word.length) { ci++; setTimeout(tick, 70); }
+      else if (!deleting && ci === word.length) { deleting = true; setTimeout(tick, 1600); }
+      else if (deleting && ci > 0) { ci--; setTimeout(tick, 35); }
+      else { deleting = false; ri = (ri + 1) % roles.length; setTimeout(tick, 250); }
+    }
+    tick();
+
+    // scroll reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (i % 3) * 0.06 + 's'; io.observe(el); });
+
+    // active nav on scroll
+    const sections = [...document.querySelectorAll('section[id]')];
+    const navA = [...document.querySelectorAll('.nav-links a')];
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navA.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(s => spy.observe(s));
+  </script>
+</body>
+</html>
